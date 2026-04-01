@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDAVAR — Estilo para Caballero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;
+  --cream:#faf8f5;
+  --sand:#f5f0e8;
+  --stone:#e8e2d9;
+  --muted:#8a7d70;
+  --charcoal:#3d3d3d;
+  --black:#1a1a1a;
+  --gold:#a08858;
+}
+body{background:var(--white);color:var(--black);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+
+/* Navigation */
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--sand);padding:0 48px;height:72px;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--black);cursor:pointer}
+.nav-links{display:flex;gap:40px}
+.nav-link{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color 0.3s;background:none;border:none;font-family:'Inter',sans-serif;font-weight:400}
+.nav-link:hover,.nav-link.active{color:var(--black)}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-icon{background:none;border:none;color:var(--charcoal);cursor:pointer;font-size:18px;position:relative}
+.cart-badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:50%;background:var(--black);color:var(--white);font-size:9px;font-weight:500;display:none;align-items:center;justify-content:center;padding:0 4px}
+
+/* Hero */
+.hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 96px 80px 80px}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:500}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5vw,64px);font-weight:400;line-height:1.1;margin-bottom:24px;color:var(--black)}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:15px;line-height:1.8;color:var(--muted);max-width:380px;margin-bottom:40px;font-weight:300}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;font-weight:400;border:1px solid transparent}
+.btn-primary{background:var(--black);color:var(--white);border-color:var(--black)}
+.btn-primary:hover{background:transparent;color:var(--black)}
+.btn-outline{background:transparent;color:var(--black);border-color:var(--black)}
+.btn-outline:hover{background:var(--black);color:var(--white)}
+.hero-right{background:var(--sand);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;opacity:0.9}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(250,248,245,0.3),transparent)}
+.hero-label{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--charcoal);white-space:nowrap}
+
+/* Collections */
+.collections-bar{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand)}
+.coll-item{padding:64px 80px;cursor:pointer;transition:background 0.3s;display:flex;justify-content:space-between;align-items:center;background:var(--white)}
+.coll-item:first-child{border-right:1px solid var(--sand)}
+.coll-item:hover{background:var(--cream)}
+.coll-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
+.coll-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;letter-spacing:1px;color:var(--black)}
+.coll-count{font-size:12px;color:var(--muted);margin-top:4px}
+.coll-arrow{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);transition:transform 0.3s}
+.coll-item:hover .coll-arrow{transform:translateX(8px)}
+
+/* Section */
+.section{padding:96px 80px;background:var(--white)}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.section-eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,36px);font-weight:400;line-height:1.2}
+.section-link{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color 0.3s;background:none;border:none;font-family:'Inter',sans-serif}
+.section-link:hover{color:var(--black)}
+
+/* Products */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px}
+.product-card{cursor:pointer;transition:opacity 0.3s;display:flex;flex-direction:column}
+.product-card:hover{opacity:0.85}
+.product-img-wrap{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--sand);margin-bottom:16px}
+.product-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px;transition:transform 0.5s;object-fit:cover}
+.product-badge{position:absolute;top:12px;left:12px;padding:4px 10px;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;background:var(--white);color:var(--black)}
+.product-badge.sale{background:var(--black);color:var(--white)}
+.product-category{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;margin-bottom:8px;letter-spacing:0.3px}
+.product-price{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--black)}
+.product-price .old{font-size:13px;color:var(--muted);text-decoration:line-through;margin-right:8px}
+
+/* Quick Add */
+.quick-add{position:absolute;bottom:0;left:0;right:0;padding:16px;background:var(--white);opacity:0;transform:translateY(8px);transition:all 0.3s}
+.product-card:hover .quick-add{opacity:1;transform:translateY(0)}
+.btn-quick{width:100%;padding:12px;background:var(--black);color:var(--white);border:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s}
+.btn-quick:hover{background:var(--charcoal)}
+
+/* Brand Story - Mejorado */
+.brand-section{display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}
+.brand-left{padding:96px 80px;display:flex;flex-direction:column;justify-content:center}
+.brand-right{position:relative;overflow:hidden;background:var(--sand)}
+.brand-img{width:100%;height:100%;object-fit:cover;opacity:0.85}
+.brand-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(160,136,88,0.15) 0%,transparent 60%)}
+.brand-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-style:italic;color:var(--charcoal);line-height:1.4;margin-bottom:32px;font-weight:400;position:relative;padding-left:32px;border-left:2px solid var(--gold)}
+.brand-desc{font-size:14px;line-height:1.9;color:var(--muted);max-width:420px;margin-bottom:40px;font-weight:300}
+.brand-stats{display:flex;gap:48px;padding-top:32px;border-top:1px solid var(--stone)}
+.bstat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--black);display:block;line-height:1;margin-bottom:4px}
+.bstat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.brand-signature{margin-top:40px;font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--gold)}
+
+/* Footer - Mejorado */
+.site-footer{background:var(--black);color:var(--white);position:relative;overflow:hidden}
+.footer-hero{position:relative;height:280px;overflow:hidden}
+.footer-hero-img{width:100%;height:100%;object-fit:cover;opacity:0.3}
+.footer-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent,var(--black))}
+.footer-hero-content{position:absolute;bottom:40px;left:80px;right:80px}
+.footer-hero-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:8px;color:var(--white)}
+.footer-hero-sub{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.footer-content{padding:80px 80px 40px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:2px;color:#c4b08a;margin-bottom:16px}
+.footer-brand-tag{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300}
+.footer-col-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:20px;font-weight:500}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-link{font-size:13px;color:rgba(255,255,255,0.6);cursor:pointer;transition:color 0.3s;background:none;border:none;font-family:'Inter',sans-serif;text-align:left;font-weight:300}
+.footer-link:hover{color:var(--white)}
+.footer-newsletter{background:rgba(255,255,255,0.05);padding:24px;margin-top:16px}
+.footer-newsletter-title{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;color:var(--white)}
+.footer-newsletter-input{width:100%;padding:12px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--white);font-family:'Inter',sans-serif;font-size:13px;margin-bottom:12px}
+.footer-newsletter-input::placeholder{color:rgba(255,255,255,0.4)}
+.footer-newsletter-btn{width:100%;padding:12px;background:#c4b08a;color:var(--black);border:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s}
+.footer-newsletter-btn:hover{background:#d4c49a}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.4)}
+.footer-dev{font-size:11px;color:rgba(255,255,255,0.4)}
+.footer-dev span{color:#c4b08a}
+.footer-socials{display:flex;gap:16px;margin-top:16px}
+.footer-social{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background 0.3s;cursor:pointer}
+.footer-social:hover{background:rgba(255,255,255,0.2)}
+
+/* Cart */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:440px;background:var(--white);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:-20px 0 60px rgba(0,0,0,0.1)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-header{padding:32px;padding-bottom:20px;border-bottom:1px solid var(--sand);display:flex;justify-content:space-between;align-items:center}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.5px}
+.cart-close{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px}
+.cart-close:hover{color:var(--black)}
+.cart-items{flex:1;overflow-y:auto;padding:24px 32px}
+.cart-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--sand)}
+.cart-item-img{width:80px;height:100px;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;overflow:hidden}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;margin-bottom:4px}
+.cart-item-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.cart-item-price{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--black)}
+.cart-item-controls{display:flex;align-items:center;gap:12px;margin-top:12px}
+.qty-btn{width:24px;height:24px;border:1px solid var(--stone);background:transparent;color:var(--charcoal);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{border-color:var(--black);color:var(--black)}
+.qty-val{font-size:13px;min-width:20px;text-align:center}
+.remove-btn{margin-left:auto;background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;letter-spacing:0.5px;text-transform:uppercase}
+.remove-btn:hover{color:var(--black)}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.cart-empty-icon{font-size:48px;margin-bottom:16px;display:block;opacity:0.4}
+.cart-empty-text{font-size:14px;margin-bottom:20px}
+.cart-footer{padding:32px;border-top:1px solid var(--sand)}
+.cart-subtotal{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:var(--muted)}
+.cart-total{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;border-top:1px solid var(--sand);padding-top:16px;margin-top:12px;display:flex;justify-content:space-between}
+.btn-checkout{width:100%;padding:16px;margin-top:20px;background:var(--black);color:var(--white);border:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+.btn-checkout:hover{background:var(--charcoal)}
+.cart-note{font-size:10px;color:var(--muted);text-align:center;margin-top:12px;letter-spacing:0.5px}
+
+/* Toast */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--black);color:var(--white);padding:14px 28px;font-size:12px;letter-spacing:0.5px;opacity:0;transition:all 0.4s;z-index:300;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Responsive */
+@media(max-width:1024px){
+  nav{padding:0 32px}
+  .hero-left{padding:48px 32px}
+  .hero-right{display:none}
+  .section{padding:64px 32px}
+  .coll-item{padding:48px 32px}
+  .brand-left{padding:64px 32px}
+  .brand-right{display:none}
+  .footer-content{padding:48px 32px}
+  .footer-hero-content{left:32px;right:32px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .collections-bar{grid-template-columns:1fr}
+  .coll-item:first-child{border-right:none;border-bottom:1px solid var(--sand)}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .section{padding:48px 20px}
+  .coll-item{padding:32px 20px}
+  .brand-left{padding:48px 20px}
+  .footer-top{grid-template-columns:1fr;gap:24px}
+  .cart-drawer{width:100%}
+  .footer-content{padding:40px 20px}
+  .footer-hero-content{left:20px;right:20px;bottom:24px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand" onclick="showView('home')">EDAVAR</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showView('home')">Inicio</button>
+    <button class="nav-link" onclick="showView('shop','all')">Catálogo</button>
+    <button class="nav-link" onclick="showView('shop','formal')">Formal</button>
+    <button class="nav-link" onclick="showView('shop','deportiva')">Deportiva</button>
+  </div>
+  <div class="nav-right">
+    <button class="nav-icon" onclick="toggleCart()" title="Carrito">
+      🛒
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</nav>
+
+<main id="main"></main>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span class="cart-title">Tu Bolsa</span>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS=[
+  {id:1,name:"Oxford Classic",cat:"formal",price:699,img:"media/Formal1.jpg",desc:"Playera formal de algodón pima. Cuello italiano, costuras reforzadas.",material:"Algodón Pima 100%",badge:"new"},
+  {id:2,name:"Midnight Executive",cat:"formal",price:849,img:"media/Formal1.jpg",desc:"Playera ejecutiva en negro profundo. Tejido anti-arrugas.",material:"Algodón Supima 95%"},
+  {id:3,name:"Burgundy Elite",cat:"formal",price:749,img:"media/burgundy-elite.png",desc:"Rojo profundo que proyecta elegancia. Corte slim fit.",material:"Modal 70%"},
+  {id:4,name:"Ivory Prestige",cat:"formal",price:799,img:"media/ivory-prestige.png",desc:"Blanco marfil premium con acabado satinado.",material:"Algodón Egipcio 100%",badge:"new"},
+  {id:5,name:"Charcoal Senator",cat:"formal",price:899,oldPrice:1099,img:"media/charcoal-senator.png",desc:"Gris carbón texturizado. Resistente y elegante.",material:"Algodón Peinado 100%",badge:"sale"},
+  {id:6,name:"Navy Command",cat:"formal",price:729,img:"media/navy-command.png",desc:"Azul marino clásico. Ideal para traje.",material:"Algodón Pima 100%"},
+  {id:7,name:"Beast Mode Pro",cat:"deportiva",price:599,img:"media/beast-mode-pro.png",desc:"Playera técnica de alto rendimiento.",material:"Poliéster 88%",badge:"new"},
+  {id:8,name:"Iron Fit",cat:"deportiva",price:549,img:"media/Deportiva2.jpg",desc:"Corte muscular con costuras planas.",material:"Poliéster Reciclado 100%"},
+  {id:9,name:"Velocity Strike",cat:"deportiva",price:629,img:"media/velocity-strike.png",desc:"Diseñada para corredores. Ventilación estratégica.",material:"Coolmax 80%"},
+  {id:10,name:"Alpha Savage",cat:"deportiva",price:679,oldPrice:799,img:"media/DeportivaWarrion.jpg",desc:"Edición especial. Tejido compresivo ligero.",material:"Nylon 70%",badge:"sale"},
+  {id:11,name:"Court Ready",cat:"deportiva",price:579,img:"media/Deportiva2.jpg",desc:"Del court al street. Tela antimicrobiana.",material:"Poliéster 92%"},
+  {id:12,name:"Steel Warrior",cat:"deportiva",price:649,img:"media/DeportivaWarrion.jpg",desc:"Para entrenamientos de alta intensidad.",material:"Tencel Sport 60%",badge:"new"},
+];
+
+let cart=JSON.parse(localStorage.getItem('edavar_cart')||'[]');
+let shopFilter='all';
+let cartOpen=false;
+
+function showView(view,filter){
+  if(filter)shopFilter=filter;
+  document.querySelectorAll('.nav-link').forEach((l,i)=>l.classList.toggle('active',i===(view==='home'?0:1)));
+  const m=document.getElementById('main');
+  view==='home'?renderHome(m):renderShop(m);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderHome(el){
+  const featured=PRODUCTS.filter(p=>p.badge==='new').slice(0,4);
+  const sale=PRODUCTS.filter(p=>p.badge==='sale');
+  el.innerHTML=`
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Colección Primavera 2025</div>
+        <h1 class="hero-title">Estilo que <em>define</em> al caballero moderno</h1>
+        <p class="hero-desc">Playeras premium para el hombre que exige calidad en cada momento — desde la oficina hasta el club.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showView('shop','all')">Explorar colección</button>
+          <button class="btn btn-outline" onclick="showView('shop','formal')">Línea Formal</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="media/ivory-prestige.png" alt="EDAVAR Collection" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-label">Edición Limitada</div>
+      </div>
+    </div>
+    <div class="collections-bar">
+      <div class="coll-item" onclick="showView('shop','formal')">
+        <div>
+          <div class="coll-label">Colección Premium</div>
+          <div class="coll-name">Formal</div>
+          <div class="coll-count">${PRODUCTS.filter(p=>p.cat==='formal').length} estilos</div>
+        </div>
+        <div class="coll-arrow">→</div>
+      </div>
+      <div class="coll-item" onclick="showView('shop','deportiva')">
+        <div>
+          <div class="coll-label">Colección Activa</div>
+          <div class="coll-name">Deportiva</div>
+          <div class="coll-count">${PRODUCTS.filter(p=>p.cat==='deportiva').length} estilos</div>
+        </div>
+        <div class="coll-arrow">→</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Nuevos Lanzamientos</div>
+          <h2 class="section-title">Lo más reciente</h2>
+        </div>
+        <button class="section-link" onclick="showView('shop','all')">Ver todo →</button>
+      </div>
+      <div class="products-grid">${featured.map(p=>cardHTML(p)).join('')}</div>
+    </div>
+    <div class="brand-section">
+      <div class="brand-left">
+        <div class="section-eyebrow">Nuestra Historia</div>
+        <p class="brand-quote">La elegancia no grita, susurra. Cada prenda cuenta una historia de dedicación y excelencia.</p>
+        <p class="brand-desc">EDAVAR nació de la convicción de que el hombre moderno merece prendas que estén a la altura de sus ambiciones. Cada pieza es diseñada con obsesión por el detalle y compromiso con la calidad.</p>
+        <div class="brand-stats">
+          <div><span class="bstat-num">12</span><span class="bstat-label">Estilos</span></div>
+          <div><span class="bstat-num">100%</span><span class="bstat-label">Premium</span></div>
+          <div><span class="bstat-num">2</span><span class="bstat-label">Líneas</span></div>
+        </div>
+        <div class="brand-signature">— EDAVAR</div>
+      </div>
+      <div class="brand-right">
+        <img src="media/Deportiva2.jpg" alt="EDAVAR Brand" class="brand-img">
+        <div class="brand-overlay"></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Ofertas</div>
+          <h2 class="section-title">En descuento</h2>
+        </div>
+      </div>
+      <div class="products-grid">${sale.map(p=>cardHTML(p)).join('')}</div>
+    </div>
+    ${footerHTML()}`;
+}
+
+function renderShop(el){
+  let list=PRODUCTS.filter(p=>{
+    if(shopFilter!=='all'&&p.cat!==shopFilter)return false;
+    return true;
+  });
+  const label={all:'Todo el Catálogo',formal:'Línea Formal',deportiva:'Línea Deportiva'}[shopFilter];
+  el.innerHTML=`
+    <div class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">EDAVAR</div>
+          <h2 class="section-title">${label} <span style="color:var(--muted);font-size:0.6em;font-weight:400">(${list.length})</span></h2>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;margin-bottom:32px;flex-wrap:wrap">
+        <button class="btn ${shopFilter==='all'?'btn-primary':'btn-outline'}" onclick="shopFilter='all';renderShop(document.getElementById('main'))" style="padding:10px 20px;font-size:10px">Todas</button>
+        <button class="btn ${shopFilter==='formal'?'btn-primary':'btn-outline'}" onclick="shopFilter='formal';renderShop(document.getElementById('main'))" style="padding:10px 20px;font-size:10px">Formal</button>
+        <button class="btn ${shopFilter==='deportiva'?'btn-primary':'btn-outline'}" onclick="shopFilter='deportiva';renderShop(document.getElementById('main'))" style="padding:10px 20px;font-size:10px">Deportiva</button>
+      </div>
+      <div class="products-grid">${list.map(p=>cardHTML(p)).join('')}</div>
+    </div>
+    ${footerHTML()}`;
+}
+
+function cardHTML(p){
+  const priceHtml=p.oldPrice?`<span class="product-price"><span class="old">$${p.oldPrice}</span>$${p.price}</span>`:`<span class="product-price">$${p.price}</span>`;
+  const badgeHtml=p.badge==='new'?`<div class="product-badge">Nuevo</div>`:p.badge==='sale'?`<div class="product-badge sale">Oferta</div>`:'';
+  return `
+    <div class="product-card" onclick="openProduct(${p.id})">
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}" class="product-img">
+        ${badgeHtml}
+        <div class="quick-add" onclick="event.stopPropagation()">
+          <button class="btn-quick" onclick="addToCart(${p.id})">Agregar a la bolsa</button>
+        </div>
+      </div>
+      <div class="product-category">${p.cat==='formal'?'Formal':'Deportiva'}</div>
+      <div class="product-name">${p.name}</div>
+      ${priceHtml}
+    </div>`;
+}
+
+function openProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  const m=document.getElementById('main');
+  m.innerHTML=`
+    <div class="section" style="max-width:1100px;margin:0 auto">
+      <button class="btn btn-outline" style="margin-bottom:32px;padding:10px 20px;font-size:10px" onclick="showView('home')">← Volver</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:var(--sand)">
+          <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding-top:20px">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px">${p.cat==='formal'?'Línea Formal':'Línea Deportiva'}</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;letter-spacing:0.5px;margin-bottom:12px">${p.name}</h1>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--black);margin-bottom:32px">
+            ${p.oldPrice?`<span style="font-size:16px;color:var(--muted);text-decoration:line-through;margin-right:12px">$${p.oldPrice}</span>`:''}$${p.price} <span style="font-size:11px;color:var(--muted);font-family:'Inter',sans-serif">MXN</span>
+          </div>
+          <p style="font-size:14px;line-height:1.9;color:var(--muted);margin-bottom:32px;font-weight:300">${p.desc}</p>
+          <div style="margin-bottom:24px">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Material</div>
+            <div style="font-size:14px;color:var(--charcoal)">${p.material}</div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:40px">
+            <button class="btn btn-primary" style="flex:1;justify-content:center;padding:16px" onclick="addToCart(${p.id})">Agregar a la bolsa</button>
+          </div>
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--sand)">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:8px">🚚 Envío gratis en compras mayores a $999 MXN</div>
+            <div style="font-size:11px;color:var(--muted)">↩️ Devoluciones dentro de 30 días</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${footerHTML()}`;
+}
+
+function addToCart(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  const ex=cart.find(i=>i.id===id);
+  if(ex)ex.qty++;else cart.push({id,qty:1});
+  saveCart();updateCartUI();
+  showToast(`${p.name} agregado a tu bolsa`);
+  if(!cartOpen)toggleCart();
+}
+
+function removeFromCart(id){cart=cart.filter(i=>i.id!==id);saveCart();updateCartUI();renderCartItems();}
+function changeQty(id,d){
+  const it=cart.find(i=>i.id===id);if(!it)return;
+  it.qty+=d;if(it.qty<=0){removeFromCart(id);return;}
+  saveCart();updateCartUI();renderCartItems();
+}
+function saveCart(){localStorage.setItem('edavar_cart',JSON.stringify(cart));}
+function updateCartUI(){
+  const t=cart.reduce((s,i)=>s+i.qty,0);
+  const b=document.getElementById('cartBadge');
+  b.style.display=t>0?'flex':'none';b.textContent=t;
+}
+function toggleCart(){
+  cartOpen=!cartOpen;
+  document.getElementById('cartOverlay').classList.toggle('open',cartOpen);
+  document.getElementById('cartDrawer').classList.toggle('open',cartOpen);
+  if(cartOpen)renderCartItems();
+}
+
+function renderCartItems(){
+  const el=document.getElementById('cartItems');
+  const ft=document.getElementById('cartFooter');
+  if(!cart.length){
+    el.innerHTML=`<div class="cart-empty"><span class="cart-empty-icon">🛒</span><div class="cart-empty-text">Tu bolsa está vacía</div><button class="btn btn-outline" style="font-size:10px;padding:12px 24px" onclick="toggleCart();showView('shop','all')">Explorar colección</button></div>`;
+    ft.innerHTML='';return;
+  }
+  const sub=cart.reduce((s,i)=>{const p=PRODUCTS.find(x=>x.id===i.id);return s+p.price*i.qty;},0);
+  const ship=sub>=999?0:99;
+  el.innerHTML=cart.map(item=>{
+    const p=PRODUCTS.find(x=>x.id===item.id);
+    return `<div class="cart-item">
+      <div class="cart-item-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-meta">${p.cat==='formal'?'Formal':'Deportiva'}</div>
+        <div class="cart-item-price">$${p.price*item.qty}</div>
+        <div class="cart-item-controls">
+          <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+          <button class="remove-btn" onclick="removeFromCart(${p.id})">Eliminar</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  ft.innerHTML=`
+    <div class="cart-subtotal"><span>Subtotal</span><span>$${sub}</span></div>
+    <div class="cart-subtotal"><span>Envío</span><span>${ship===0?'Gratis':'$'+ship}</span></div>
+    <div class="cart-total"><span>Total</span><span>$${sub+ship}</span></div>
+    <button class="btn-checkout" onclick="showToast('Función de pago próximamente');toggleCart()">Finalizar compra</button>
+    <div class="cart-note">Pago seguro · Devoluciones en 30 días</div>`;
+}
+
+let toastT;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.innerHTML=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function footerHTML(){
+  return `<footer class="site-footer">
+    <div class="footer-hero">
+      <img src="media/DeportivaWarrion.jpg" alt="EDAVAR" class="footer-hero-img">
+      <div class="footer-hero-overlay"></div>
+      <div class="footer-hero-content">
+        <div class="footer-hero-title">Únete a la experiencia EDAVAR</div>
+        <div class="footer-hero-sub">Estilo · Calidad · Elegancia</div>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">EDAVAR</div>
+          <p class="footer-brand-tag">Estilo para el caballero moderno. Ropa formal y deportiva de la más alta calidad.</p>
+          <div class="footer-socials">
+            <div class="footer-social">📧</div>
+            <div class="footer-social">📷</div>
+            <div class="footer-social">💬</div>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Colecciones</div>
+          <div class="footer-links">
+            <button class="footer-link" onclick="showView('shop','formal')">Línea Formal</button>
+            <button class="footer-link" onclick="showView('shop','deportiva')">Línea Deportiva</button>
+            <button class="footer-link" onclick="showView('shop','all')">Nuevos Ingresos</button>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Información</div>
+          <div class="footer-links">
+            <button class="footer-link">Guía de tallas</button>
+            <button class="footer-link">Envíos y devoluciones</button>
+            <button class="footer-link">Cuidado de prendas</button>
+            <button class="footer-link">Preguntas frecuentes</button>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Newsletter</div>
+          <div class="footer-newsletter">
+            <div class="footer-newsletter-title">Recibe ofertas exclusivas</div>
+            <input type="email" class="footer-newsletter-input" placeholder="Tu correo electrónico">
+            <button class="footer-newsletter-btn" onclick="showToast('¡Gracias por suscribirte!')">Suscribirse</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 EDAVAR. Todos los derechos reservados.</span>
+        <span class="footer-dev">Desarrollado por <span>dev.savage</span> · Santiago Gómez García</span>
+      </div>
+    </div>
+  </footer>`;
+}
+
+updateCartUI();
+showView('home');
+</script>
+</body>
+</html>
